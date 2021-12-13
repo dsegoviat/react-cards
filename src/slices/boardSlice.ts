@@ -31,7 +31,7 @@ export const boardSlice = createSlice({
                 JSON.parse(localStorage.getItem('stored-cards')!) as ICard[] :
                 [];
         },
-        add: (state, action: PayloadAction<{ id: number, title: string, description: string, url: string }>) => {
+        add: (state, action: PayloadAction<{ title: string, description: string, url: string }>) => {
             state.cards.push({
                 id: state.cards.length,
                 title: action.payload.title,
@@ -45,12 +45,9 @@ export const boardSlice = createSlice({
         edit: (state, action: PayloadAction<{ id: number, title: string, description: string, url: string }>) => {
             const index = state.cards.findIndex(card => card.id === action.payload.id);
             if (index > -1) {
-                state.cards[index] = {
-                    ...state.cards[index],
-                    title: action.payload.title,
-                    description: action.payload.description,
-                    url: action.payload.url
-                };
+                state.cards[index].title = action.payload.title;
+                state.cards[index].description = action.payload.description;
+                state.cards[index].url = action.payload.url;
             }
         },
         remove: (state, action: PayloadAction<number>) => {
@@ -65,15 +62,7 @@ export const boardSlice = createSlice({
     }
 });
 
-export const createCard = (id: number, title: string, description: string, url?: string): ICard => {
-    return {
-        id: id,
-        title: title,
-        description: description,
-        createdAt: new Date().toISOString(),
-        url: url ? url : 'https://picsum.photos/id/1016/500/300?grayscale'
-    };
-};
+
 
 export const selectCards = (state: RootState): ICard[] => state.cards;
 export const selectForm = (state: RootState): IForm => state.form;

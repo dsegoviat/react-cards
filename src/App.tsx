@@ -111,7 +111,7 @@ const App = () => {
     };
 
     const handleCreateSubmit = (event: any) => {
-        dispatch(add({ id, title, description, url }));
+        dispatch(add({ title, description, url }));
         setCreateModalOpen(false);
     };
 
