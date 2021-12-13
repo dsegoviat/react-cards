@@ -24,3 +24,7 @@ yarn-error.log*
 
 .idea/
 *.iml
+
+.dockerignore
+Dockerfile
+Dockerfile.prod

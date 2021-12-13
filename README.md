@@ -1,35 +1,49 @@
 This project is based on React/Redux with Typescript. 
 
-## Installation
-First of all, install required npm packages.
+## Quickstart
+You can use the available image in [Docker Hub](https://hub.docker.com/repository/docker/dsegoviat/react-cards) 
+to quickly get the application running.
+
+`docker run -it -p 3000:3000 dsegoviat/react-cards`
+
+Application will be running on https://localhost:3000.
+
+If you want to run your own development server, please check **Usage** section.
+
+## Usage
+First, install all required npm packages. I have used Node `v16.13.0`.
 
 `npm install`
 
-## Available Scripts
+To run the development server:
 
-In the project directory, you can run:
+`npm start`
 
-### `npm start`
+## Testing
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can run tests by executing. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+`npm test`
 
-### `npm test`
+See [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for
+more information.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![img.png](./public/tests.png)
 
-### `npm run build`
+## Run locally with docker
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Build the docker container.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`docker build -f Dockerfile -t cards .`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start container from local image.
 
-## Docker deployment
+`docker run -it -p 3000:3000 cards`
+
+## Features
+This solution includes the following features:
+- Cards CRUD (with default image)
+- Sorting by title and creation date
+- Application state is stored in localStorage
+- Reducer testing
+- Minimal App component testing
